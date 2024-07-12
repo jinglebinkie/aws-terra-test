@@ -220,14 +220,14 @@ resource "aws_apigatewayv2_integration" "apigw_lambda" {
 resource "aws_apigatewayv2_route" "post" {
   api_id = aws_apigatewayv2_api.http_lambda.id
 
-  route_key = "POST /news-items"
+  route_key = "POST /newsitem"
   target    = "integrations/${aws_apigatewayv2_integration.apigw_lambda.id}"
 }
 
 resource "aws_apigatewayv2_route" "get" {
   api_id = aws_apigatewayv2_api.http_lambda.id
 
-  route_key = "GET /news-items"
+  route_key = "GET /news"
   target    = "integrations/${aws_apigatewayv2_integration.apigw_lambda.id}"
 }
 

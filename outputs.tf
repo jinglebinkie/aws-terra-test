@@ -7,14 +7,14 @@ output "apigwy_url" {
   value = aws_apigatewayv2_stage.default.invoke_url
 }
 
-# output "lambda_log_group" {
-#   description = "Name of the CloudWatch logs group for the lambda function"
+output "lambda_log_group" {
+  description = "Name of the CloudWatch logs group for the lambda function"
 
-#   value = aws_cloudwatch_log_group.lambda_logs.id
-# }
+  value = aws_cloudwatch_log_group.lambda_logs.id
+}
 
-# output "apigwy_log_group" {
-#   description = "Name of the CloudWatch logs group for the lambda function"
+output "apigwy_log_group" {
+  description = "Name of the CloudWatch logs group for the lambda function"
 
-#   value = aws_cloudwatch_log_group.api_gw.id
-#}
+  value = aws_cloudwatch_log_group.api_gw.id
+}
