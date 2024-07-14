@@ -4,6 +4,8 @@ phases:
   pre_build:
     commands:
       - docker build -t terraform-shell .
+      - echo "Insert the breakpoint"
+      - codebuild-breakpoint
   build:
     commands:
       - docker images
