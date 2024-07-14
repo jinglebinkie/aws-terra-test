@@ -3,12 +3,12 @@ version: 0.2
 env:
   secrets-manager:
     access_key: "arn:aws:secretsmanager:eu-central-1:654654627826:secret:access_key-GNbp0e"
-    secret_key: "arn:aws:secretsmanager:eu-central-1:654654627826:secret:secret_key-yU41MM"
+    secret_key: "arn:aws:secretsmanager:eu-central-1:654654627826:secret:secrett_key-yU41MM"
 phases:
   pre_build:
     commands:
       - docker build -t terraform-shell .
-      - echo $access_key # is not showing in cloudwatch of cloudbuild logging 
+      - echo $access_key # is showing in cloudwatch as ***, ehich seems pretty okay  of cloudbuild logging 
   build:
     commands:
       - docker images
