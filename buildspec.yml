@@ -1,0 +1,10 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - docker build -t terraform-shell .
+  build:
+    commands:
+      - docker images
+      - docker run terraform-shell /bin/terraform plan 

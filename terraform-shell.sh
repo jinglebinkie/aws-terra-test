@@ -11,4 +11,4 @@ docker run -it --rm \
   --volume "$PWD":/terraform \
   --volume "/Users/jingle/.aws":/root/.aws \
   --workdir /terraform \
-terraform-shell
+terraform-shell /bin/terraform init; /bin/terraform plan
