@@ -8,3 +8,4 @@ phases:
     commands:
       - docker images
       - docker run terraform-shell /bin/terraform init
+# trying to get it to do anything basede on created docker image 
