@@ -12,4 +12,4 @@ set -e
 docker build . -t terraform-shell
 docker run -it --rm \
   --workdir /terraform \
-terraform-shell
+terraform-shell 

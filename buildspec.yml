@@ -12,5 +12,5 @@ phases:
   build:
     commands:
       - docker images
-      - docker run terraform-shell /bin/terraform plan
+      - docker run terraform-shell /bin/pwd;/bin/ls
 # trying to get it to do anything based on created docker image .
