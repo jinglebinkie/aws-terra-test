@@ -7,4 +7,4 @@ phases:
   build:
     commands:
       - docker images
-      - docker run terraform-shell /bin/terraform plan 
+      - docker run terraform-shell /bin/terraform init
