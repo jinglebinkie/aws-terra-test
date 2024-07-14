@@ -1,5 +1,5 @@
 version: 0.2
-
+# try and load secrets as env vars 
 env:
   secrets-manager:
     access_key: "arn:aws:secretsmanager:eu-central-1:654654627826:secret:access_key-GNbp0e"
@@ -8,7 +8,7 @@ phases:
   pre_build:
     commands:
       - docker build -t terraform-shell .
-      - echo $access_key
+      - echo $access_key # is not showing in cloudwatch of cloudbuild logging 
   build:
     commands:
       - docker images

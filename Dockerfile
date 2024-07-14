@@ -2,17 +2,17 @@ FROM hashicorp/terraform:latest
 
 # Bake required providers into the image.
 ADD required-providers.tf /root/required-providers.tf
+
+# bake .tf files to create the resources n the container  for cloudbuild , otherwise comment our and use local volume in terraform-shell script 
 ADD main.tf /root/main.tf
 ADD variables.tf /root/variables.tf
 ADD outputs.tf /root/outputs.tf
 
 # RUN mkdir -p /root/.terraform/
-RUN cd /root && terraform init -upgrade
+# Works locally with local aws creds dile for the bucket location for tfstate, fails in cloudbuild due to inability to add aws creds
+#RUN cd /root && terraform init -upgrade
 
-# Set required environment variables.
-#ADD .bashrc /root/.bashrc
-
-# Replace default shell with Bash.
+# Replace default shell with Bash and add aws-cli for testing purposed wien running locally 
 RUN apk add bash curl aws-cli
 
 ENTRYPOINT [ "" ]
