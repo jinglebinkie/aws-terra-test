@@ -4,7 +4,8 @@
 output "apigwy_url" {
   description = "URL for API Gateway stage"
 
-  value = aws_apigatewayv2_stage.default.invoke_url
+  #value = aws_apigatewayv2_stage.default.invoke_url
+  value = aws_api_gateway_deployment.api_deployment
 }
 
 output "lambda_log_group" {
