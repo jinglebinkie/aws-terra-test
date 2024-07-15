@@ -12,6 +12,6 @@ phases:
       - echo $access_key
   build:
     commands:
-      - docker images
-      - docker run terraform-shell /bin/pwd;/bin/ls
-# trying to get it to do anything based on created docker image, directory listing is show , running any terraform cmd does not work due to missing AWS creds to reach the tfstate bucket
+      #- docker images
+      - docker run terraform-shell terraform init 
+# trying to get it to do anything based on created docker image, directory listing is shown when command = docker run terraform-shell /bin/pwd;/bin/ls, running any terraform cmd does not work due to missing AWS creds to reach the tfstate bucket
