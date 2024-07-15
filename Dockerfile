@@ -12,8 +12,8 @@ ADD outputs.tf /root/outputs.tf
 # Works locally with local aws creds dile for the bucket location for tfstate, fails in cloudbuild due to inability to add aws creds
 #RUN cd /root && terraform init -upgrade
 
-# Replace default shell with Bash and add aws-cli for testing purposed wien running locally 
-RUN apk add bash curl aws-cli
+# Replace default shell with Bash and add aws-cli for testing purposed when running locally 
+RUN apk add bash curl 
 
 ENTRYPOINT [ "" ]
 CMD /bin/bash
