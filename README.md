@@ -4,7 +4,8 @@
 This will start the build of a docker image with needed terraform software and assisting tools like aws cli and then start the fresh built image and mount local credentials file into container through volume, from there terraform init/plan/apply is possible keeping a remote state in S3
 
 AWS Note: 
-Cannot seem to get cloudbuild to pass creds as variables (from manually inserted secrets in Secret manager) into docker running container after build through buildspec.yml. Therfor a terraform init is not working as the remoe state bucket is not reachable. Using the buildspec I can query the Secretmanager for the creds and echo them ( it will show **), but it retrieves something at least 
+Cannot seem to get codebuild to pass creds as variables (from manually inserted secrets in Secret manager) into docker running container after build through buildspec.yml. Therfor a terraform init is not working as the remoe state bucket is not reachable. Using the buildspec I can query the Secretmanager for the creds and echo them ( it will show **), but it retrieves something at least 
+Codeuild is picking up github pushes not , and creds might work now .. 
 
 When starting locally: run terraform init to setup fresh providers
 

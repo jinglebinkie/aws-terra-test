@@ -8,11 +8,9 @@ phases:
   pre_build:
     commands:
       - echo Retrieving AWS credentials from Secrets Manager...
-      - export SECRETS=$(aws secretsmanager get-secret-value --secret-id aws-creds --query SecretString --output text)
+      - export SECRETS=$(aws secretsmanager --region eu-central-1 get-secret-value --secret-id aws-creds --query SecretString --output text)
       - export AWS_ACCESS_KEY_ID=$(echo $SECRETS | jq -r '.AWS_ACCESS_KEY_ID')
       - export AWS_SECRET_ACCESS_KEY=$(echo $SECRETS | jq -r '.AWS_SECRET_ACCESS_KEY')
-      - echo $AWS_ACCESS_KEY_ID
-      - echo $AWS_SECRET_ACCESS_KEY
       - docker build -t terraform-shell .
       #- echo $secret_key # is showing in cloudwatch as ***, which seems pretty okay  of cloudbuild logging 
       #- echo $access_key
