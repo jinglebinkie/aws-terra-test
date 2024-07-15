@@ -12,6 +12,7 @@ phases:
       - export AWS_ACCESS_KEY_ID=$(echo $SECRETS | jq -r '.AWS_ACCESS_KEY_ID')
       - export AWS_SECRET_ACCESS_KEY=$(echo $SECRETS | jq -r '.AWS_SECRET_ACCESS_KEY')
       - echo $AWS_ACCESS_KEY_ID
+      - echo $AWS_SECRET_ACCESS_KEY
       - docker build -t terraform-shell .
       #- echo $secret_key # is showing in cloudwatch as ***, which seems pretty okay  of cloudbuild logging 
       #- echo $access_key
@@ -21,12 +22,12 @@ phases:
       - docker run -rm terraform-shell 
           -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
           -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
-          -w /terraform \
+          --workdir /terraform \
           terraform-shell terraform init
       - docker run -rm terraform-shell 
           -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
           -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
-          -w /terraform \
+          --workdir /terraform \
           terraform-shell terraform apply -auto-approve
 
 
