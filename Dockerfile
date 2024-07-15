@@ -4,11 +4,13 @@ FROM hashicorp/terraform:latest
 ADD required-providers.tf /root/required-providers.tf
 
 # bake .tf files to create the resources n the container  for cloudbuild , otherwise comment our and use local volume in terraform-shell script 
-ADD main.tf /root/main.tf
-ADD variables.tf /root/variables.tf
-ADD outputs.tf /root/outputs.tf
+RUN mkdir -p /root/.terraform/
+RUN mkdir /terraform/
 
-# RUN mkdir -p /root/.terraform/
+ADD main.tf /terraform/main.tf
+ADD variables.tf /terraform/variables.tf
+ADD outputs.tf /terraform/outputs.tf
+
 # Works locally with local aws creds dile for the bucket location for tfstate, fails in cloudbuild due to inability to add aws creds
 #RUN cd /root && terraform init -upgrade
 
