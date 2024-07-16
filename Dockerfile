@@ -17,5 +17,6 @@ ADD outputs.tf /terraform/outputs.tf
 # Replace default shell with Bash and add aws-cli for testing purposed when running locally 
 RUN apk add bash
 
-ENTRYPOINT [ "" ]
+WORKDIR /terraform 
+#ENTRYPOINT [ "" ]
 #SCMD /bin/bash
