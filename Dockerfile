@@ -18,4 +18,4 @@ ADD outputs.tf /terraform/outputs.tf
 RUN apk add bash curl 
 
 ENTRYPOINT [ "" ]
-CMD /bin/bash
+#CMD /bin/bash
