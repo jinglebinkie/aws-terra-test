@@ -1,14 +1,14 @@
 version: 0.2
 # try and load secrets as env vars 
-env:
-  secrets-manager:
-    access_key: "arn:aws:secretsmanager:eu-central-1:654654627826:secret:access_key-GNbp0e"
-    secret_key: "arn:aws:secretsmanager:eu-central-1:654654627826:secret:secret_key-yU41MM"
+#env:
+  #secrets-manager:
+   # access_key: "arn:aws:secretsmanager:eu-central-1:654654627826:secret:access_key-GNbp0e"
+   # secret_key: "arn:aws:secretsmanager:eu-central-1:654654627826:secret:secret_key-yU41MM"
 phases:
   pre_build:
     commands:
       - echo Retrieving AWS credentials from Secrets Manager...
-      - export SECRETS=$(aws secretsmanager --region eu-central-1 get-secret-value --secret-id aws-creds --query SecretString --output json)
+      - export SECRETS=$(aws secretsmanager --region eu-central-1 get-secret-value --secret-id aws-creds --query SecretString --output text)
       - export AWS_ACCESS_KEY_ID=$(echo $SECRETS | jq -r '.AWS_ACCESS_KEY_ID')
       - export AWS_SECRET_ACCESS_KEY=$(echo $SECRETS | jq -r '.AWS_SECRET_ACCESS_KEY')
       - docker build -t terraform-shell .
