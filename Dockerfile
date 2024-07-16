@@ -15,7 +15,7 @@ ADD outputs.tf /terraform/outputs.tf
 #RUN cd /root && terraform init -upgrade
 
 # Replace default shell with Bash and add aws-cli for testing purposed when running locally 
-RUN apk add bash curl 
+RUN apk add bash
 
 ENTRYPOINT [ "" ]
-#CMD /bin/bash
+CMD /bin/bash

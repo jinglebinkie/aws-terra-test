@@ -17,13 +17,15 @@ phases:
   build:
     commands:
       #- docker images
-      - docker run --rm terraform-shell init
-      # - docker run --rm \
-      #     -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
-      #     -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
-      #     -w /terraform \
-      #     terraform-shell terraform apply --auto-approve
-          # -w /terraform \
-          # -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
-          # -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
+      - docker run --rm \
+        -w /terraform \
+        -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
+        -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
+        terraform-shell /bin/bash terraform init
+      - docker run --rm \
+        -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
+        -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
+        -w /terraform \
+        terraform-shell /bin/bash terraform apply --auto-approve
+
 # trying to get it to do anything based on created docker image, directory listing is shown when command = docker run terraform-shell /bin/pwd;/bin/ls, running any terraform cmd does not work due to missing AWS creds to reach the tfstate bucket
