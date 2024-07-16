@@ -18,5 +18,5 @@ ADD outputs.tf /terraform/outputs.tf
 RUN apk add bash
 
 WORKDIR /terraform 
-#ENTRYPOINT [ "" ]
-#SCMD /bin/bash
+ENTRYPOINT [ "" ]
+CMD /bin/bash
