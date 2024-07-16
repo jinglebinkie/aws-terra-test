@@ -18,4 +18,4 @@ ADD outputs.tf /terraform/outputs.tf
 RUN apk add bash
 
 ENTRYPOINT [ "" ]
-CMD /bin/bash
+#SCMD /bin/bash

@@ -21,7 +21,7 @@ phases:
         -w /terraform \
         -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
         -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
-        terraform-shell /bin/bash terraform init
+        terraform-shell init -backend-config="bucket=your-tfstate-bucket"tf-bucket-mr
       - docker run --rm \
         -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
         -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
