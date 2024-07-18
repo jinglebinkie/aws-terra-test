@@ -22,7 +22,7 @@ phases:
       - docker images
       - docker run --rm terraform-shell terraform init
 
-      - docker run --rm -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY terraform-shell terraform plan
+      - docker run --rm -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -e AWS_REGION=eu-central-1 terraform-shell terraform plan
 
 
         #terraform-shell /bin/terraform init -backend-config="bucket=tf-bucket-mr"
