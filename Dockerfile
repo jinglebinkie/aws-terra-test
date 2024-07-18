@@ -16,8 +16,8 @@ ADD entrypoint.sh /terraform/entrypoint.sh
 #RUN cd /root && terraform init -upgrade
 
 # Replace default shell with Bash and add aws-cli for testing purposed when running locally 
-#RUN apk add bash
+RUN apk add bash
 
 WORKDIR /terraform 
-ENTRYPOINT [ "./entrypoint.sh" ]
+ENTRYPOINT [ "/terraform/entrypoint.sh" ]
 #CMD /bin/bash
