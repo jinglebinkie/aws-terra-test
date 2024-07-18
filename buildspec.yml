@@ -16,7 +16,7 @@ phases:
       - echo $AWS_SECRET_ACCESS_KEY
       - docker build -t terraform-shell .
       #- echo $secret_key # is showing in cloudwatch as ***, which seems pretty okay  of cloudbuild logging 
-      #- echo $access_key
+
   build:
     commands:
       - docker images
