@@ -27,11 +27,11 @@ I was able to post and get with following commands
 
 HTTP  curl -X POST https://4ghfkidyqa.execute-api.eu-central-1.amazonaws.com/newsitem  --header 'Content-Type: application/json' -d '{"news-item-id":"1", "date-news-item":"2024-07-15, "desc-news-item":"nieuwsbericht1"}'
 
-REST  curl -X POST https://kcj0vxirse.execute-api.eu-central-1.amazonaws.com/default/newsitem -H "Content-Type: application/json" -d '{"news-item-id":"8", "date-news-item":"20021979", "desc-news-item":"nieuwer-nieuwsbericht-metnieuwnieuws"}'
+REST  curl -X POST https://wqmjsxjh15.execute-api.eu-central-1.amazonaws.com/default/newsitem -H "Content-Type: application/json" -d '{"news-item-id":"8", "date-news-item":"20021979", "desc-news-item":"nieuwer-nieuwsbericht-metnieuwnieuws"}'
 
 HTTP curl -X GET https://4ghfkidyqa.execute-api.eu-central-1.amazonaws.com/new
 
-REST curl -X GET https://kcj0vxirse.execute-api.eu-central-1.amazonaws.com/default/news
+REST curl -X GET https://wqmjsxjh15.execute-api.eu-central-1.amazonaws.com/default/news
 
 
 
