@@ -7,6 +7,7 @@ ADD required-providers.tf /root/required-providers.tf
 RUN mkdir -p /root/.terraform/
 RUN mkdir /terraform/
 
+COPY src/ /terraform/src
 ADD main.tf /terraform/main.tf
 ADD variables.tf /terraform/variables.tf
 ADD outputs.tf /terraform/outputs.tf

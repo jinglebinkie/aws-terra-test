@@ -14,7 +14,7 @@ case $1 in
         terraform init
         ;;
     "plan")
-        terraform init
+        terraform init -reconfigure
         terraform plan
         ;;
     "apply")
