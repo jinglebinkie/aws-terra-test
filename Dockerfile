@@ -18,6 +18,8 @@ ADD entrypoint.sh /terraform/entrypoint.sh
 # Replace default shell with Bash and add aws-cli for testing purposed when running locally 
 RUN apk add bash
 
-WORKDIR /terraform 
-ENTRYPOINT [ "/terraform/entrypoint.sh" ]
+
+WORKDIR /terraform
+RUN chmod +x entrypoint.sh 
+ENTRYPOINT [ "./entrypoint.sh" ]
 #CMD /bin/bash
