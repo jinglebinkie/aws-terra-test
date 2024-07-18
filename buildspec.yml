@@ -20,10 +20,6 @@ phases:
   build:
     commands:
       - docker images
-      - docker run --rm -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -e AWS_REGION=eu-central-1 terraform-shell terraform init;terraform plan
+      - docker run --rm -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -e AWS_REGION=eu-central-1 terraform-shell terraform plan
 
-      #- docker run --rm -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -e AWS_REGION=eu-central-1 terraform-shell terraform plan
-
-
-        #terraform-shell /bin/terraform init -backend-config="bucket=tf-bucket-mr"
-# trying to get it to do anything based on created docker image, directory listing is shown when command = docker run terraform-shell /bin/pwd;/bin/ls, running any terraform cmd does not work due to missing AWS creds to reach the tfstate bucket
+     
