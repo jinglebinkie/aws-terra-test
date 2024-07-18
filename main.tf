@@ -1,8 +1,8 @@
 provider "aws" {
   region  = "eu-central-1"
-  profile = "jingle"
-  shared_credentials_files  = ["/root/.aws/credentials"]
-  shared_config_files      = ["/root/.aws/config"]
+  #profile = "jingle"
+  #shared_credentials_files  = ["/root/.aws/credentials"]
+  #shared_config_files      = ["/root/.aws/config"]
 }
 
 terraform {
