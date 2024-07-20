@@ -1,11 +1,5 @@
 # Input variable definitions
 
-variable "s3_bucket_prefix" {
-  description = "S3 bucket prefix"
-  type = string
-  default = "apigw-lambda-ddb"
-  
-}
 
 variable "lambda_name" {
   description = "name of the lambda function"
