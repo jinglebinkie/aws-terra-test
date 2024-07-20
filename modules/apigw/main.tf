@@ -78,3 +78,27 @@ resource "random_string" "random" {
   length           = 4
   special          = false
 }
+
+//Define lambda function
+resource "aws_lambda_function" "apigw_lambda_ddb" {
+  function_name = "${var.lambda_name}-${random_string.random.id}"
+  description = "serverless db query"
+
+  s3_bucket = aws_s3_bucket.lambda_bucket.id
+  s3_key    = aws_s3_object.lampda-bucket.key
+
+  runtime = "python3.8"
+  handler = "app.lambda_handler"
+
+  source_code_hash = data.archive_file.lambda_zip.output_base64sha256
+
+  role = aws_iam_role.lambda_exec.arn
+  
+  environment {
+    variables = {
+      DDB_TABLE = var.dynamodb_table
+    }
+  }
+  depends_on = [aws_cloudwatch_log_group.lambda_logs]
+  
+}
