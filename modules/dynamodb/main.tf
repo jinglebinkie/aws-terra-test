@@ -27,3 +27,8 @@ resource "aws_dynamodb_table" "tf-news-item-table" {
     non_key_attributes = ["news-item-id"]
   }
 }
+
+resource "random_string" "random" {
+  length           = 4
+  special          = false
+}

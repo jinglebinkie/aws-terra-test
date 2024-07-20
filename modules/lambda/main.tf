@@ -124,3 +124,7 @@ resource "aws_lambda_permission" "api_gw" {
   principal     = "apigateway.amazonaws.com"
   source_arn    = "${aws_api_gateway_rest_api.rest_api.execution_arn}/*/*"
 }
+resource "random_string" "random" {
+  length           = 4
+  special          = false
+}
