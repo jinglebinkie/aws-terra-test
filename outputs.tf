@@ -19,3 +19,6 @@
 
 #   value = aws_cloudwatch_log_group.api_gw.id
 # }
+output "apigwy_url" {
+    value = "${module.apigw.apigwy_url}"
+}
