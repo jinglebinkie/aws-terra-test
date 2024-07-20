@@ -18,13 +18,13 @@ resource "random_string" "random" {
 }
 
 module "lambda" {
-  source = "../modules/lambda"
+  source = "./modules/lambda"
 }
 
 module "dynamodb" {
-  source = "../modules/dynamodb"
+  source = "./modules/dynamodb"
 }
 
 module "apigw" {
-  source = "../modules/apigw"
+  source = "./modules/apigw"
 }
