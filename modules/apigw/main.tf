@@ -67,18 +67,6 @@ resource "aws_cloudwatch_log_group" "api_gw" {
   retention_in_days = var.apigw_log_retention
 }
 
-resource "aws_lambda_permission" "api_gw" {
-  statement_id  = "AllowExecutionFromAPIGateway"
-  action        = "lambda:InvokeFunction"
-  function_name = aws_lambda_function.apigw_lambda_ddb.function_name
-  principal     = "apigateway.amazonaws.com"
-  source_arn    = "${aws_api_gateway_rest_api.rest_api.execution_arn}/*/*"
-}
-resource "random_string" "random" {
-  length           = 4
-  special          = false
-}
-
 //Define lambda function
 resource "aws_lambda_function" "apigw_lambda_ddb" {
   function_name = "${var.lambda_name}-${random_string.random.id}"
