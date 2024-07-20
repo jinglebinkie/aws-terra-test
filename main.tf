@@ -17,9 +17,9 @@ resource "random_string" "random" {
   special          = false
 }
 
-module "lambda" {
-  source = "./modules/lambda"
-}
+# module "lambda" {
+#   source = "./modules/lambda"
+# }
 
 module "dynamodb" {
   source = "./modules/dynamodb"
