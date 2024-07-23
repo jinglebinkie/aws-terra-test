@@ -1,13 +1,12 @@
 # aws-terra-test
 
-./terraform-shell.sh 
+./terraform-shell-local.sh 
 This will start the build of a docker image with needed terraform software and assisting tools like aws cli and then start the fresh built image and mount local credentials file into container through volume, from there terraform init/plan/apply is possible keeping a remote state in S3
+When starting locally: run terraform init to setup fresh providers
 
 AWS Note: 
-Cannot seem to get codebuild to pass creds as variables (from manually inserted secrets in Secret manager) into docker running container after build through buildspec.yml. Therfor a terraform init is not working as the remoe state bucket is not reachable. Using the buildspec I can query the Secretmanager for the creds and echo them ( it will show **), but it retrieves something at least 
-Codeuild is picking up github pushes not , and creds might work now .. 
+AWS creds are placed in Secrets Manager in my own AWS account , in the ubildspecy they are now passed to the container , and the entrypoint.sh determines what to execute 
 
-When starting locally: run terraform init to setup fresh providers
 
 Terraform will use S3 bucket as backend storage 
 Bucket was manually created and not publicly accessible
@@ -32,7 +31,7 @@ curl -X GET https://x6s8aoqca0.execute-api.eu-central-1.amazonaws.com/bananas/ne
 
 
 
-Not fixed ( but is it needed without frontend ?) = CORS 
+Not fixed yet = CORS 
 Proper assumeroles for least privileged access 
 Metering/monitoring with dashboard 
 
