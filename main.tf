@@ -1,8 +1,5 @@
 provider "aws" {
   region  = "eu-central-1"
-  #profile = "jingle"
-  #shared_credentials_files  = ["/root/.aws/credentials"]
-  #shared_config_files      = ["/root/.aws/config"]
 }
 
 terraform {
@@ -17,9 +14,6 @@ resource "random_string" "random" {
   special          = false
 }
 
-# module "lambda" {
-#   source = "./modules/lambda"
-# }
 
 module "dynamodb" {
   source = "./modules/dynamodb"

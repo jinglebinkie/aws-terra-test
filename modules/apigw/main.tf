@@ -97,18 +97,6 @@ resource "aws_s3_bucket" "lambda_bucket" {
   bucket_prefix = var.s3_bucket_prefix
   force_destroy = true
 }
-# set permission options so acl can be set private
-# resource "aws_s3_bucket_ownership_controls" "lambda_bucket_privs" {
-#   bucket = aws_s3_bucket.lambda_bucket.id
-#   rule {
-#     object_ownership = "BucketOwnerPreferred"
-#   }
-# }
-# # set acl to private access 
-# resource "aws_s3_bucket_acl" "private_bucket" {
-#   bucket = aws_s3_bucket.lambda_bucket.id
-#   acl    = "private"
-# }
 
 data "archive_file" "lambda_zip" {
   type = "zip"
