@@ -24,10 +24,10 @@ Created sever IAM policies  :
 
 I was able to post and get with following commands
 
-curl -X POST https://x6s8aoqca0.execute-api.eu-central-1.amazonaws.com/bananas/newsitem -H "Content-Type: application/json" -d '{"news-item-id":"8", "date-news-item":"20021979", "desc-news-item":"nieuwer-nieuwsbericht-metnieuwnieuws"}'
+curl -X POST https://k87432wz04.execute-api.eu-central-1.amazonaws.com/bananas/newsitem -H "Content-Type: application/json" -d '{"news-item-id":"8", "date-news-item":"20021979", "desc-news-item":"nieuwer-nieuwsbericht-metnieuwnieuws"}'
 
 
-curl -X GET https://x6s8aoqca0.execute-api.eu-central-1.amazonaws.com/bananas/news
+curl -X GET https://k87432wz04.execute-api.eu-central-1.amazonaws.com/bananas/news
 
 
 
