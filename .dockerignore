@@ -1,0 +1,6 @@
+.terrafor*
+Dockerfile
+README.md
+src.zip
+terraform-*
+buildspec.yml

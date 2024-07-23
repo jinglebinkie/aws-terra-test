@@ -1,18 +1,19 @@
 # aws-terra-test
 
-./terraform-shell.sh 
+./terraform-shell-local.sh 
 This will start the build of a docker image with needed terraform software and assisting tools like aws cli and then start the fresh built image and mount local credentials file into container through volume, from there terraform init/plan/apply is possible keeping a remote state in S3
-
-AWS Note: 
-Cannot seem to get codebuild to pass creds as variables (from manually inserted secrets in Secret manager) into docker running container after build through buildspec.yml. Therfor a terraform init is not working as the remoe state bucket is not reachable. Using the buildspec I can query the Secretmanager for the creds and echo them ( it will show **), but it retrieves something at least 
-Codeuild is picking up github pushes not , and creds might work now .. 
-
 When starting locally: run terraform init to setup fresh providers
+
+AWS Notes: 
+AWS creds are placed in Secrets Manager in my own AWS account, in the buildspec they are now passed to the container  as env vars, and the entrypoint.sh determines what to execute regarding Terraform
+AWS codebuild can access repo aws-terra-test throug a fine-grained peronal access token (without user permissions , only  Read access to code, commit statuses, and metadata and  Read and Write access to repository hooks
+Separated APIGW/Lambda resources from the DynamoDB in 2 seperate modules 
+
 
 Terraform will use S3 bucket as backend storage 
 Bucket was manually created and not publicly accessible
 
-after running terraform apply for following was created:
+after running terraform apply the following resources are created:
 - Dynamodb table with ID/Description/Date of news item
 - REST ApiGW with read and post methods
 - Lambda function for the get and post of articles
@@ -23,21 +24,20 @@ Created sever IAM policies  :
 - codebuild policies
 - get-secrets
 
-I was able to post and get with following commands
+I was able to post and get with following commands (replace apigateway url after redeploy)
 
-HTTP  curl -X POST https://4ghfkidyqa.execute-api.eu-central-1.amazonaws.com/newsitem  --header 'Content-Type: application/json' -d '{"news-item-id":"1", "date-news-item":"2024-07-15, "desc-news-item":"nieuwsbericht1"}'
+curl -X POST https://k87432wz04.execute-api.eu-central-1.amazonaws.com/bananas/newsitem -H "Content-Type: application/json" -d '{"news-item-id":"8", "date-news-item":"20021979", "desc-news-item":"nieuwer-nieuwsbericht-metnieuwnieuws"}'
 
-REST  curl -X POST https://wqmjsxjh15.execute-api.eu-central-1.amazonaws.com/default/newsitem -H "Content-Type: application/json" -d '{"news-item-id":"8", "date-news-item":"20021979", "desc-news-item":"nieuwer-nieuwsbericht-metnieuwnieuws"}'
 
-HTTP curl -X GET https://4ghfkidyqa.execute-api.eu-central-1.amazonaws.com/new
-
-REST curl -X GET https://wqmjsxjh15.execute-api.eu-central-1.amazonaws.com/default/news
+curl -X GET https://k87432wz04.execute-api.eu-central-1.amazonaws.com/bananas/news
 
 
 
-Not fixed ( but is it needed without frontend ?) = CORS 
+Not fixed yet = CORS 
 Proper assumeroles for least privileged access 
 Metering/monitoring with dashboard 
+
+
 
 
 

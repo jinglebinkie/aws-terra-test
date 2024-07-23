@@ -8,7 +8,7 @@ set -e
 
 
 
-docker build . -t terraform-shell
+docker build -f Dockerfile-local . -t terraform-shell
 docker run -it --rm \
   --volume "$PWD":/terraform \
   --volume "/Users/jingle/.aws":/root/.aws \
